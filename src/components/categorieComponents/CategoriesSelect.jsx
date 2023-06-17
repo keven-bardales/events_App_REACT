@@ -1,26 +1,17 @@
-import { useContext, useState, useEffect } from 'react';
+import { Field } from 'formik';
+import { useEffect } from 'react';
+import { useEvents } from '../../context/EventsContext';
 
 function CategoriesSelect(props) {
-  const [categories, setcategories] = useState([]);
+  const { categories, loadCategories } = useEvents();
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('http://localhost:3000/api/v1/categories');
-      const data = await response.json();
-      setcategories(data);
-    }
-    fetchData();
+    loadCategories();
   }, []);
+
   return (
-    <select
-      required
-      name='id_category'
-      onChange={props.handleChange}
-      defaultValue=''
-    >
-      <option value='' disabled>
-        Select a category
-      </option>
+    <Field required name='id_category' as='select'>
+      <option value=''>Select a category</option>
       {categories.map((category) => {
         return (
           <option key={category.id} value={parseInt(category.id)}>
@@ -28,7 +19,7 @@ function CategoriesSelect(props) {
           </option>
         );
       })}
-    </select>
+    </Field>
   );
 }
 

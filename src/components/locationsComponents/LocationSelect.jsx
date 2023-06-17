@@ -1,31 +1,16 @@
-import { useContext, useState, useEffect } from 'react';
-import {
-  LocationContext,
-  LocationContextProvider,
-} from '../../context/LocationsContext';
+import { useEffect } from 'react';
+import { useEvents } from '../../context/EventsContext';
 import { Field } from 'formik';
 
 function LocationSelect(props) {
-  const [locations, setlocations] = useState([]);
+  const { locations, loadLocations } = useEvents();
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('http://localhost:3000/api/v1/locations');
-      const data = await response.json();
-      setlocations(data);
-    }
-    fetchData();
+    loadLocations();
   }, []);
   return (
-    <select
-      required
-      name='id_location'
-      onChange={props.handleChange}
-      defaultValue=''
-    >
-      <option value='' disabled>
-        Select a Location
-      </option>
+    <Field required name='id_location' as='select'>
+      <option value=''>Select a Location</option>
       {locations.map((location) => {
         return (
           <option key={location.id} value={parseInt(location.id)}>
@@ -33,7 +18,7 @@ function LocationSelect(props) {
           </option>
         );
       })}
-    </select>
+    </Field>
   );
 }
 

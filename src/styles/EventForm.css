@@ -1,0 +1,9 @@
+.eventForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+}
+
+.eventForm img {
+  max-height: 200px;
+}

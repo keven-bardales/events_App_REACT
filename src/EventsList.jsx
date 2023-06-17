@@ -1,16 +1,26 @@
 import Event from './components/eventsComponents/Event';
-import { useContext } from 'react';
-import { EventsContext } from './context/EventsContext';
+import { useEvents } from './context/EventsContext';
+import { useEffect } from 'react';
+import './styles/EventList.css';
 
 function EventsList() {
-  const { events } = useContext(EventsContext);
-  return (
-    <section>
-      {events.map((event) => {
-        return <Event key={event.id} event={event}></Event>;
-      })}
-    </section>
-  );
+  const { events, loadEvents } = useEvents();
+
+  useEffect(() => {
+    loadEvents();
+  }, []);
+
+  const renderEventList = () => {
+    if (events.length == 0) {
+      return <h1>No Events In System</h1>;
+    }
+
+    return events.map((event) => {
+      return <Event key={event.event_id} event={event}></Event>;
+    });
+  };
+
+  return <section className='EventList'>{renderEventList()}</section>;
 }
 
 export default EventsList;
