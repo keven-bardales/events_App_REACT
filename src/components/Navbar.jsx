@@ -41,6 +41,14 @@ function Navbar() {
             </li>
           </ul>
         </li>
+        <li className='navbar_link'>
+          <Link to='/categories'>Categories</Link>
+          <ul>
+            <li className='navbar_link'>
+              <Link to='/new_category'>Create Category</Link>
+            </li>
+          </ul>
+        </li>
       </ul>
     </nav>
   );

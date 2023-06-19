@@ -21,6 +21,10 @@ import {
   deleteLocationRequest,
   deleteUserRequest,
   deleteOrganizerRequest,
+  deleteCategoryRequest,
+  createCategoryRequest,
+  getCategoryByIdRegetCategoryByIdRequestquest,
+  updateCategoryRequest,
 } from '../api/events.api.js';
 import User from '../components/usersComponents/User.jsx';
 
@@ -140,6 +144,15 @@ export function EventsContextProvider(props) {
     }
   }
 
+  const getCategoryById = async (id) => {
+    try {
+      const response = await getCategoryByIdRequest(id);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const getLocationById = async (id) => {
     try {
       const response = await getLocationByIdRequest(id);
@@ -154,6 +167,15 @@ export function EventsContextProvider(props) {
       const response = await createEventRequest(event);
       console.log(response.data);
       setevents([...events, event]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const createCategory = async (new_category) => {
+    try {
+      const response = await createCategoryRequest(new_category);
+      setcategories([...categories, new_category]);
     } catch (error) {
       console.log(error);
     }
@@ -255,6 +277,15 @@ export function EventsContextProvider(props) {
     }
   };
 
+  const deleteCategory = async (id) => {
+    try {
+      await deleteCategoryRequest(id);
+      setcategories(categories.filter((category) => category.id != id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <EventsContext.Provider
       value={{
@@ -269,6 +300,7 @@ export function EventsContextProvider(props) {
         loadOrganizers,
         loadUsers,
         getEventById,
+        getCategoryById,
         getOrganizerById,
         categoryIdByName,
         organizerIdByName,
@@ -279,6 +311,7 @@ export function EventsContextProvider(props) {
         createEvent,
         createOrganizer,
         createUser,
+        createCategory,
         updateEvent,
         updateOrganizer,
         updateLocation,
@@ -287,6 +320,7 @@ export function EventsContextProvider(props) {
         deleteLocation,
         deleteOrganizer,
         deleteUser,
+        deleteCategory,
       }}
     >
       {props.children}

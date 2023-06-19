@@ -11,6 +11,7 @@ import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
 import { EventsContextProvider } from './context/EventsContext';
 import UserForm from './components/usersComponents/UserForm';
+import CategoriesPage from './pages/Categoriespage';
 
 function App() {
   return (
@@ -51,6 +52,17 @@ function App() {
         <Route path='/users' element={<UsersPage></UsersPage>}></Route>
         <Route path='/new_user' element={<UserForm></UserForm>}></Route>
         <Route path='/edit_user/:id' element={<UserForm></UserForm>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
+
+        <Route
+          path='/categories'
+          element={<CategoriesPage></CategoriesPage>}
+        ></Route>
+        <Route path='/new_category' element={<UserForm></UserForm>}></Route>
+        <Route
+          path='/edit_category/:id'
+          element={<UserForm></UserForm>}
+        ></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
     </EventsContextProvider>

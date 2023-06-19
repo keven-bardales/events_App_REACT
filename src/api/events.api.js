@@ -36,6 +36,18 @@ export const deleteLocationRequest = async (id) =>
 export const getCategoriesRequest = async () =>
   await axios.get(`http://localhost:3000/api/v1/categories`);
 
+export const createCategoryRequest = async (newCategory) =>
+  await axios.post(`http://localhost:3000/api/v1/categories`, newCategory);
+
+export const deleteCategoryRequest = async (id) =>
+  await axios.delete(`http://localhost:3000/api/v1/categories/${id}`);
+
+export const getCategoryByIdRequest = async (id) =>
+  await axios.get(`http://localhost:3000/api/v1/categories/${id}`);
+
+export const updateCategoryRequest = async (id, newCategory) =>
+  await axios.put(`http://localhost:3000/api/v1/categories/${id}`, newCategory);
+
 export const getOrganizersRequest = async () =>
   await axios.get(`http://localhost:3000/api/v1/organizers`);
 
