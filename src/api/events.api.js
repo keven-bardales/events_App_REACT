@@ -48,6 +48,9 @@ export const updateOrganizerRequest = async (id, newOrganizer) =>
     newOrganizer
   );
 
+export const deleteOrganizerRequest = async (id) =>
+  await axios.delete(`http://localhost:3000/api/v1/organizers/${id}`);
+
 export const createOrganizerRequest = async (organizer) =>
   await axios.post(`http://localhost:3000/api/v1/organizers`, organizer);
 

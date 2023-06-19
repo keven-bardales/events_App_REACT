@@ -2,7 +2,6 @@ import { Form, Formik, Field, ErrorMessage } from 'formik';
 import { useEffect, useState } from 'react';
 import { useEvents } from '../../context/EventsContext';
 import { useNavigate, useParams } from 'react-router-dom';
-
 function UserForm() {
   const { createUser, updateUser, getUserById } = useEvents();
   const [user, setUser] = useState({
@@ -28,10 +27,19 @@ function UserForm() {
           avatar: editableUser.avatar,
           confirmPassword: '',
         });
+      } else {
+        setUser({
+          name: '',
+          email: '',
+          password: '',
+          avatar: '',
+          confirmPassword: '',
+        });
       }
     };
     loadUserById();
-  }, []);
+  }, [params.id]);
+
   return (
     <div className='formDiv'>
       <h1>{params.id ? `Edit User: ${user.name}` : 'Create a new User'}</h1>

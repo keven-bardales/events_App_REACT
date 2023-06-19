@@ -19,7 +19,7 @@ const LocationList = () => {
     });
   };
 
-  return <section>{renderLocationList()}</section>;
+  return <section className='List'>{renderLocationList()}</section>;
 };
 
 export default LocationList;

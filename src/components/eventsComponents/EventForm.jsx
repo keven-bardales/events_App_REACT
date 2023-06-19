@@ -1,12 +1,10 @@
 import { Form, Formik, Field, ErrorMessage } from 'formik';
-import LocationSelect from '../components/locationsComponents/LocationSelect';
-import CategoriesSelect from '../components/categorieComponents/CategoriesSelect';
-import OrganizersSelect from '../components/organizersComponents/OrganizersSelect';
+import LocationSelect from '../locationsComponents/LocationSelect';
+import CategoriesSelect from '../categorieComponents/CategoriesSelect';
+import OrganizersSelect from '../organizersComponents/OrganizersSelect';
 import { useEffect, useState } from 'react';
-import { useEvents } from '../context/EventsContext';
+import { useEvents } from '../../context/EventsContext';
 import { useNavigate, useParams } from 'react-router-dom';
-import '../styles/EventForm.css';
-
 function EventForm() {
   const {
     createEvent,

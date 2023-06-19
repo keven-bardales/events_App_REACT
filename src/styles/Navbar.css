@@ -1,0 +1,59 @@
+.Navbar {
+  width: 100%;
+}
+
+.navBarMenu {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  transition: all 0.3ms;
+}
+
+.Navbar ul {
+  background-color: #030712;
+}
+
+.navBarMenu .navbar_link {
+  padding: 0.5em 0.5em;
+  position: relative;
+  transition: all 0.3ms;
+}
+
+.navBarMenu .navbar_link.active {
+  border-bottom: 7px solid #0ea5e9;
+}
+
+.navBarMenu .navbar_link a {
+  display: block;
+  color: #9ca3af;
+}
+
+.navBarMenu .navbar_link > ul {
+  top: 110%;
+  left: 0;
+  display: none;
+  position: absolute;
+}
+
+.navBarMenu .navbar_link > ul {
+  width: 200%;
+  text-align: center;
+}
+
+.navBarMenu .navbar_link:hover {
+  border-bottom: 7px solid #fafffd;
+}
+
+.navbar_link ul > .navbar_link:hover {
+  background-color: #0ea5e9;
+  border-bottom: 7px solid transparent !important;
+}
+
+.navBarMenu .navbar_link:hover a {
+  color: #fafffd;
+}
+
+.navBarMenu .navbar_link:hover > ul {
+  display: block;
+}

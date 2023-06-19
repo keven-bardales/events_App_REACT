@@ -4,7 +4,7 @@ import EventPage from './pages/EventPage';
 import LocationsPage from './pages/LocationsPage';
 import OrganizersPage from './pages/OrganizersPage';
 import UsersPage from './pages/UsersPage';
-import EventForm from './pages/EventForm';
+import EventForm from './components/eventsComponents/EventForm';
 import LocationForm from './components/locationsComponents/LocationForm';
 import OrganizerForm from './components/organizersComponents/OrganizerForm';
 import NotFound from './pages/NotFound';

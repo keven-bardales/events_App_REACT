@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useEvents } from '../../context/EventsContext';
 import { useState, useEffect } from 'react';
 
-const LocationForm = () => {
+const OrganizerForm = () => {
   const { createOrganizer, getOrganizerById, updateOrganizer } = useEvents();
   const [organizer, setorganizer] = useState({
     name: '',
@@ -41,29 +41,23 @@ const LocationForm = () => {
         // Resto del código...
 
         onSubmit={async (values) => {
-          const { confirmPassword, ...newUser } = values;
-
           if (params.id) {
-            await updateUser(params.id, newUser);
-            navigate('/users');
+            await updateOrganizer(params.id, values);
+            navigate('/organizers');
           } else {
-            await createUser(newUser);
-            navigate('/users');
+            await createOrganizer(values);
+            navigate('/organizers');
           }
 
-          setUser({
+          setorganizer({
             name: '',
-            email: '',
-            password: '',
-            avatar: '',
-            confirmPassword: '',
+            address: '',
+            logo: '',
           });
 
           setformEnviado(true);
           setTimeout(() => setformEnviado(false), 3000);
         }}
-
-        // Resto del código...
       >
         {({ isSubmitting, values }) => (
           <Form>
@@ -100,4 +94,4 @@ const LocationForm = () => {
   );
 };
 
-export default LocationForm;
+export default OrganizerForm;

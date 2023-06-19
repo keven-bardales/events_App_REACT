@@ -20,6 +20,7 @@ import {
   updateLocationRequest,
   deleteLocationRequest,
   deleteUserRequest,
+  deleteOrganizerRequest,
 } from '../api/events.api.js';
 import User from '../components/usersComponents/User.jsx';
 
@@ -238,7 +239,7 @@ export function EventsContextProvider(props) {
 
   const deleteOrganizer = async (id) => {
     try {
-      await deleteEventRequest(id);
+      await deleteOrganizerRequest(id);
       setorganizers(organizers.filter((organizer) => organizer.id !== id));
     } catch (error) {
       console.log(error);

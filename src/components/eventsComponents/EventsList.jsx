@@ -1,7 +1,6 @@
-import Event from './components/eventsComponents/Event';
-import { useEvents } from './context/EventsContext';
+import Event from './Event';
+import { useEvents } from '../../context/EventsContext';
 import { useEffect } from 'react';
-import './styles/EventList.css';
 
 function EventsList() {
   const { events, loadEvents } = useEvents();
@@ -20,7 +19,12 @@ function EventsList() {
     });
   };
 
-  return <section className='EventList'>{renderEventList()}</section>;
+  return (
+    <section className='List'>
+      <h2 className='list_title'>Events</h2>
+      {renderEventList()}
+    </section>
+  );
 }
 
 export default EventsList;

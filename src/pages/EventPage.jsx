@@ -1,4 +1,4 @@
-import EventsList from '../EventsList';
+import EventsList from '../components/eventsComponents/EventsList';
 export function EventPage() {
   return (
     <>
