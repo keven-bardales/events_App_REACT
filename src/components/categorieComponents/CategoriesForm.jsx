@@ -58,28 +58,21 @@ const CategoryForm = () => {
       >
         {({ isSubmitting, values }) => (
           <Form>
-            <label>Organizer Name</label>
+            <label>Category Name</label>
             <Field
               type='text'
               name='name'
               placeholder='Write a location Name'
               required
             ></Field>{' '}
-            <label>Organizer Logo</label>
-            <img src={values.logo}></img>
+            <label>Category Description</label>
             <Field
               type='text'
-              name='logo'
-              placeholder='Insert Logo of Organizer'
+              as='textarea'
+              name='description'
+              placeholder='Write a location Name'
               required
             ></Field>{' '}
-            <label>Organizer Address</label>
-            <Field
-              type='text'
-              name='address'
-              placeholder='Write a Street Name'
-              required
-            ></Field>
             <button disabled={isSubmitting} type='submit'>
               {isSubmitting ? 'Saving...' : 'Send'}
             </button>
