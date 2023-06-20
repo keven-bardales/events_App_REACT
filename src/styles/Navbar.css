@@ -1,5 +1,12 @@
+header {
+  padding-bottom: 2em;
+}
+
 .Navbar {
+  top: 0;
+  left: 0;
   width: 100%;
+  position: fixed;
 }
 
 .navBarMenu {

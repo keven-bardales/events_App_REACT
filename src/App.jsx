@@ -7,6 +7,7 @@ import UsersPage from './pages/UsersPage';
 import EventForm from './components/eventsComponents/EventForm';
 import LocationForm from './components/locationsComponents/LocationForm';
 import OrganizerForm from './components/organizersComponents/OrganizerForm';
+import CategoryForm from './components/categorieComponents/CategoriesForm';
 import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
 import { EventsContextProvider } from './context/EventsContext';
@@ -58,10 +59,13 @@ function App() {
           path='/categories'
           element={<CategoriesPage></CategoriesPage>}
         ></Route>
-        <Route path='/new_category' element={<UserForm></UserForm>}></Route>
+        <Route
+          path='/new_category'
+          element={<CategoryForm></CategoryForm>}
+        ></Route>
         <Route
           path='/edit_category/:id'
-          element={<UserForm></UserForm>}
+          element={<CategoryForm></CategoryForm>}
         ></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>

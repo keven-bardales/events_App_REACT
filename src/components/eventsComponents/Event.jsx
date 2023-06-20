@@ -49,10 +49,22 @@ function Event({ event }) {
           <span className='content'>{event.organizer_name}</span>
         </div>
       </section>
-      {<button onClick={() => deleteEvent(event.event_id)}>Delete</button>}
-      <button onClick={() => navigate(`/edit_event/${event.event_id}`)}>
-        Edit
-      </button>
+      <section className='card_group button_group'>
+        {
+          <button
+            className='delete_button'
+            onClick={() => deleteEvent(event.event_id)}
+          >
+            Delete
+          </button>
+        }
+        <button
+          className='edit_button'
+          onClick={() => navigate(`/edit_event/${event.event_id}`)}
+        >
+          Edit
+        </button>
+      </section>
     </article>
   );
 }

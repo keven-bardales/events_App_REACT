@@ -1,0 +1,127 @@
+.form_section {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  background-color: transparent;
+}
+
+.createForm {
+  max-width: 800px;
+  padding: 2em 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-radius: 2em;
+  border: 1px solid #ccc;
+  background-color: #030712;
+}
+
+.createForm .column {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.formInput {
+  flex-basis: 49%;
+  padding: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+textarea {
+  flex-basis: 100%;
+  max-width: 100%;
+  resize: vertical;
+}
+
+.formInput label {
+  flex-basis: 100%;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  color: #ffffff;
+}
+
+.formInput img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1em;
+}
+
+.formInput.eventNameInput {
+  flex-basis: 100%;
+  align-content: start;
+  align-self: flex-end;
+}
+
+.formInput.imgContainer {
+  flex-basis: 30%;
+  align-items: center;
+}
+
+/* Styles for input fields */
+input[type='text'],
+input[type='email'],
+input[type='password'],
+textarea,
+select {
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid #89a3af;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  font-family: inherit;
+  font-size: 1em;
+  color: #030712;
+  background-color: #ffffff;
+}
+
+/* Styles for buttons */
+.createForm button {
+  padding: 0.5em 1em;
+  background-color: #0ea5e9;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  flex-basis: 40%;
+  font-family: inherit;
+  font-size: 1em;
+}
+
+.createForm button:disabled {
+  background-color: #89a3af;
+  cursor: not-allowed;
+}
+
+.inputGroup {
+  flex-grow: 1;
+  display: flex;
+  flex-basis: 49%;
+  flex-wrap: wrap;
+}
+
+.column._c2 > .inputGroup {
+  display: flex;
+  flex-basis: 100%;
+}
+
+.column._c2 > .inputGroup:first-child .formInput,
+.column._c2 > .inputGroup:last-child .formInput {
+  flex-basis: 30%;
+}
+
+.createForm .form_cancel {
+  background-color: #ff5e5b;
+}
+
+.formInput.flex-100 {
+  flex-basis: 100%;
+}
+
+@media (max-width: 600px) {
+  /* Estilos para pantallas más pequeñas */
+}

@@ -55,7 +55,7 @@ function EventForm() {
     loadEventById();
   }, []);
   return (
-    <div className='formDiv'>
+    <section className='form_section'>
       <h1>{params.id ? `Edit Event: ${params.id}` : 'Create a new Event'}</h1>
       <Formik
         initialValues={event}
@@ -89,68 +89,131 @@ function EventForm() {
           setTimeout(() => setformEnviado(false), 3000);
         }}
       >
-        {({ handleSubmit, isSubmitting, values }) => (
-          <Form onSubmit={handleSubmit} className='eventForm'>
-            <label>Event Name</label>
-            <Field
-              type='text'
-              name='name'
-              placeholder='Write a name'
-              required
-            ></Field>
+        {({ isSubmitting, values }) => (
+          <Form className='createForm'>
+            <section className='column c_1'>
+              <div className='inputGroup'>
+                <div className='formInput eventNameInput'>
+                  <label htmlFor='name'>Event Name</label>
+                  <Field
+                    type='text'
+                    id='name'
+                    name='name'
+                    placeholder='Write a name'
+                    required
+                  />
+                </div>
 
-            <label>Event Picture</label>
-            <img src={values.picture}></img>
-            <Field
-              type='text'
-              name='picture'
-              placeholder='Url of Event'
-              required
-            ></Field>
+                <div className='formInput'>
+                  <label htmlFor='picture'>Event Picture</label>
 
-            <label>Description</label>
-            <Field
-              as='textarea'
-              name='description'
-              rows={3}
-              placeholder='Write a description'
-              required
-            ></Field>
+                  <Field
+                    type='text'
+                    id='picture'
+                    name='picture'
+                    placeholder='URL of Event Picture'
+                    required
+                  />
+                </div>
+              </div>
 
-            <label>Start Time</label>
-            <Field
-              type='datetime-local'
-              name='start_time'
-              placeholder='Select start time'
-              required
-            />
+              <div className='inputGroup'>
+                <div className='formInput imgContainer'>
+                  <img
+                    src={
+                      values.picture
+                        ? values.picture
+                        : 'https://placehold.co/600x400'
+                    }
+                  />
+                </div>
+              </div>
+            </section>
 
-            <label>End Time</label>
-            <Field
-              type='datetime-local'
-              name='end_time'
-              placeholder='Select end time'
-              required
-            />
+            <section className='column _c2'>
+              <div className='inputGroup'>
+                <div className='formInput'>
+                  <label htmlFor='cost'>Cost of Event</label>
+                  <Field
+                    type='number'
+                    id='cost'
+                    name='cost'
+                    placeholder='Cost of the event'
+                    required
+                  />
+                </div>{' '}
+                <div className='formInput'>
+                  <label htmlFor='start_time'>Start Time</label>
+                  <Field
+                    type='datetime-local'
+                    id='start_time'
+                    name='start_time'
+                    placeholder='Select start time'
+                    required
+                  />
+                </div>
+                <div className='formInput'>
+                  <label htmlFor='end_time'>End Time</label>
+                  <Field
+                    type='datetime-local'
+                    id='end_time'
+                    name='end_time'
+                    placeholder='Select end time'
+                    required
+                  />
+                </div>
+              </div>
 
-            <label>Cost of Event</label>
-            <Field
-              type='number'
-              name='cost'
-              placeholder='Cost of the event'
-              required
-            ></Field>
-            <CategoriesSelect></CategoriesSelect>
-            <LocationSelect></LocationSelect>
-            <OrganizersSelect></OrganizersSelect>
+              <div className='inputGroup'>
+                <div className='formInput'>
+                  <label htmlFor='description'>Description</label>
+                  <Field
+                    as='textarea'
+                    id='description'
+                    name='description'
+                    rows={3}
+                    placeholder='Write a description'
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className='inputGroup'>
+                <div className='formInput'>
+                  <label htmlFor='categories'>Categories</label>
+                  <CategoriesSelect id='categories' />
+                </div>
+
+                <div className='formInput'>
+                  <label htmlFor='location'>Location</label>
+                  <LocationSelect id='location' />
+                </div>
+
+                <div className='formInput'>
+                  <label htmlFor='organizers'>Organizers</label>
+                  <OrganizersSelect id='organizers' />
+                </div>
+              </div>
+            </section>
+
             <button disabled={isSubmitting} type='submit'>
               {isSubmitting ? 'Saving...' : 'Send'}
             </button>
-            {formEnviado && <p>Formulario enviado con exito!</p>}
+
+            <button
+              className='form_cancel'
+              onClick={() => navigate('/events')}
+              disabled={isSubmitting}
+              type='submit'
+            >
+              Cancel
+            </button>
+
+            {formEnviado && <p>Formulario enviado con éxito!</p>}
           </Form>
         )}
       </Formik>
-    </div>
+    </section>
   );
 }
 

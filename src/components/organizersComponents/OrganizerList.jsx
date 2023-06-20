@@ -19,7 +19,12 @@ function OrganizerList() {
     });
   };
 
-  return <section className='List'>{renderOrganizerList()}</section>;
+  return (
+    <section className='List'>
+      <h2 className='list_title'>Organizers</h2>
+      {renderOrganizerList()}
+    </section>
+  );
 }
 
 export default OrganizerList;

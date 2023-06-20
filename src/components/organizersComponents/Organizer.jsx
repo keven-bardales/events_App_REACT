@@ -7,22 +7,32 @@ function Organizer({ organizer }) {
   const navigate = useNavigate();
 
   return (
-    <div className='card'>
-      <h2 className='cardtitle'>{organizer.name}</h2>
-      <span>Logo</span>
+    <article className='card'>
+      <h3 className='cardtitle'>{organizer.name}</h3>
       <img className='card_image' src={organizer.logo} alt='Organizer' />
-      <p className='description'>Address: {organizer.address}</p>
       <section className='card_group'>
         <div className='cardInfo'>
-          <button onClick={() => deleteOrganizer(organizer.id)}>Delete</button>
-        </div>
-        <div className='cardInfo'>
-          <button onClick={() => navigate(`/edit_organizer/${organizer.id}`)}>
-            Edit
-          </button>
+          <h4 className='item_title'>Address:</h4>
+          <span className='content'>{organizer.address}</span>
         </div>
       </section>
-    </div>
+
+      <section className='card_group button_group'>
+        <button
+          className='delete_button'
+          onClick={() => deleteOrganizer(organizer.id)}
+        >
+          Delete
+        </button>
+
+        <button
+          className='edit_button'
+          onClick={() => navigate(`/edit_organizer/${organizer.id}`)}
+        >
+          Edit
+        </button>
+      </section>
+    </article>
   );
 }
 

@@ -41,7 +41,7 @@ function UserForm() {
   }, [params.id]);
 
   return (
-    <div className='formDiv'>
+    <section className='form_section'>
       <h1>{params.id ? `Edit User: ${user.name}` : 'Create a new User'}</h1>
       <Formik
         initialValues={user}
@@ -70,56 +70,110 @@ function UserForm() {
         }}
       >
         {({ isSubmitting, values }) => (
-          <Form className='eventForm'>
-            <label>Full Name {!params.id && <span>*</span>}</label>
-            <Field
-              type='text'
-              name='name'
-              placeholder='Write a name'
-              required
-            ></Field>
+          <Form className='createForm'>
+            <section className='column c_1'>
+              <div className='inputGroup flex-100'>
+                <div className='formInput'>
+                  <label htmlFor='name'>
+                    Full Name {!params.id && <span>*</span>}
+                  </label>
+                  <Field
+                    type='text'
+                    id='name'
+                    name='name'
+                    placeholder='Write a name'
+                    required
+                  />
+                </div>
 
-            <label>User Avatar {!params.id && <span>*</span>}</label>
-            <img src={values.avatar}></img>
-            <Field
-              type='text'
-              name='avatar'
-              placeholder='Url of Avatar Picture'
-              required
-            ></Field>
+                <div className='formInput flex-100'>
+                  <label htmlFor='avatar'>
+                    User Avatar {!params.id && <span>*</span>}
+                  </label>
+                  <Field
+                    type='text'
+                    id='avatar'
+                    name='avatar'
+                    placeholder='URL of Avatar Picture'
+                    required
+                  />
+                </div>
+              </div>
+              <div className='inputGroup'>
+                <div className='formInput'>
+                  <img
+                    src={
+                      values.avatar
+                        ? values.avatar
+                        : 'https://placehold.co/600x400'
+                    }
+                  />
+                </div>
+              </div>
+            </section>
 
-            <label>Email {!params.id && <span>*</span>}</label>
-            <Field
-              type='email'
-              name='email'
-              placeholder='Enter an email'
-              required
-            ></Field>
+            <section className='column _c2'>
+              {' '}
+              <div className='inputGroup'>
+                <div className='formInput'>
+                  <label htmlFor='email'>
+                    Email {!params.id && <span>*</span>}
+                  </label>
+                  <Field
+                    type='email'
+                    id='email'
+                    name='email'
+                    placeholder='Enter an email'
+                    required
+                  />
+                </div>
 
-            <label>Password {!params.id && <span>*</span>}</label>
-            <Field
-              type='password'
-              name='password'
-              placeholder='Enter a password'
-              required={!params.id}
-            />
+                <div className='formInput'>
+                  <label htmlFor='password'>
+                    Password {!params.id && <span>*</span>}
+                  </label>
+                  <Field
+                    type='password'
+                    id='password'
+                    name='password'
+                    placeholder='Enter a password'
+                    required={!params.id}
+                  />
+                </div>
 
-            <label>Confirm Password {!params.id && <span>*</span>}</label>
-            <Field
-              type='password'
-              name='confirmPassword'
-              placeholder='Confirm Password'
-              required={!params.id}
-            />
+                <div className='formInput'>
+                  <label htmlFor='confirmPassword'>
+                    Confirm Password {!params.id && <span>*</span>}
+                  </label>
+                  <Field
+                    type='password'
+                    id='confirmPassword'
+                    name='confirmPassword'
+                    placeholder='Confirm Password'
+                    required={!params.id}
+                  />
+                </div>
+              </div>
+            </section>
 
             <button disabled={isSubmitting} type='submit'>
               {isSubmitting ? 'Saving...' : 'Send'}
             </button>
-            {formEnviado && <p>Form sent Succesfully</p>}
+
+            <button
+              className='form_cancel'
+              onClick={() => navigate('/users')}
+              disabled={isSubmitting}
+              type='submit'
+            >
+              Cancel
+            </button>
+
+            {formEnviado && <p>Form sent successfully</p>}
           </Form>
         )}
       </Formik>
-    </div>
+    </section>
   );
 }
 

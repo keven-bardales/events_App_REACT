@@ -32,7 +32,7 @@ const OrganizerForm = () => {
   }, []);
 
   return (
-    <div className='formDiv'>
+    <section className='form_section'>
       <h1>{params.id ? `Edit : ${organizer.name}` : 'Create an Organizer'}</h1>
 
       <Formik
@@ -60,37 +60,69 @@ const OrganizerForm = () => {
         }}
       >
         {({ isSubmitting, values }) => (
-          <Form>
-            <label>Organizer Name</label>
-            <Field
-              type='text'
-              name='name'
-              placeholder='Write a location Name'
-              required
-            ></Field>{' '}
-            <label>Organizer Logo</label>
-            <img src={values.logo}></img>
-            <Field
-              type='text'
-              name='logo'
-              placeholder='Insert Logo of Organizer'
-              required
-            ></Field>{' '}
-            <label>Organizer Address</label>
-            <Field
-              type='text'
-              name='address'
-              placeholder='Write a Street Name'
-              required
-            ></Field>
+          <Form className='createForm'>
+            <section className='column c_1'>
+              <div className='inputGroup'>
+                <div className='formInput flex-100'>
+                  <label htmlFor='name'>Organizer Name</label>
+                  <Field
+                    type='text'
+                    id='name'
+                    name='name'
+                    placeholder='Write an organizer name'
+                    required
+                  />
+                </div>{' '}
+                <div className='formInput flex-100'>
+                  <label htmlFor='address'>Organizer Address</label>
+                  <Field
+                    type='text'
+                    id='address'
+                    name='address'
+                    placeholder='Write an organizer address'
+                    required
+                  />
+                </div>
+                <div className='formInput flex-100'>
+                  <label htmlFor='logo'>Organizer Logo</label>{' '}
+                  <Field
+                    type='text'
+                    id='logo'
+                    name='logo'
+                    placeholder='Insert logo URL of organizer'
+                    required
+                  />
+                </div>
+              </div>{' '}
+              <div className='inputGroup'>
+                <div className='formInput'>
+                  <img
+                    src={
+                      values.logo ? values.logo : 'https://placehold.co/600x400'
+                    }
+                  />
+                </div>
+              </div>
+            </section>
+
             <button disabled={isSubmitting} type='submit'>
               {isSubmitting ? 'Saving...' : 'Send'}
             </button>
-            {formEnviado && <p>Formulario enviado con exito!</p>}
+
+            <button
+              className='form_cancel'
+              onClick={() => navigate('/organizers')}
+              disabled={isSubmitting}
+              type='submit'
+            >
+              Cancel
+            </button>
+
+            {formEnviado && <p>Form sent successfully!</p>}
           </Form>
         )}
       </Formik>
-    </div>
+    </section>
   );
 };
 

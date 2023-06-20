@@ -7,20 +7,32 @@ function Category({ category }) {
   const navigate = useNavigate();
 
   return (
-    <div className='card'>
-      <h2 className='cardtitle'>{category.name}</h2>
-      <p className='description'>Description: {category.description}</p>
+    <article className='card'>
+      <h3 className='cardtitle'>{category.name}</h3>
+
       <section className='card_group'>
         <div className='cardInfo'>
-          <button onClick={() => deleteCategory(category.id)}>Delete</button>
-        </div>
-        <div className='cardInfo'>
-          <button onClick={() => navigate(`/edit_category/${category.id}`)}>
-            Edit
-          </button>
+          <h4 className='item_title'>Description:</h4>
+          <span className='content'>{category.description}</span>
         </div>
       </section>
-    </div>
+
+      <section className='card_group button_group'>
+        <button
+          className='delete_button'
+          onClick={() => deleteCategory(category.id)}
+        >
+          Delete
+        </button>
+
+        <button
+          className='edit_button'
+          onClick={() => navigate(`/edit_category/${category.id}`)}
+        >
+          Edit
+        </button>
+      </section>
+    </article>
   );
 }
 

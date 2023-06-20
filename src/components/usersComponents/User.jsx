@@ -5,26 +5,36 @@ import { useNavigate } from 'react-router-dom';
 function User({ user }) {
   const { deleteUser } = useEvents();
   const navigate = useNavigate();
-  const [showPass, setshowPass] = useState(false);
 
   return (
-    <div key={user.id} className='card'>
-      <h2 className='cardtitle'>{user.name}</h2>
-      <span>Avatar</span>
+    <article key={user.id} className='card'>
+      <h3 className='cardtitle'>{user.name}</h3>
       <img className='card_image' src={user.avatar} alt='Event' />
-      <p className='description'>{user.email}</p>
-      <p className='description'>Password: {showPass ? 'hola' : '*******'}</p>
+
       <section className='card_group'>
         <div className='cardInfo'>
-          <button onClick={() => deleteUser(user.id)}>Delete</button>
+          <h4 className='item_title'>Email:</h4>
+          <span className='content'>{user.email}</span>
         </div>
         <div className='cardInfo'>
-          <button onClick={() => navigate(`/edit_user/${user.id}`)}>
-            Edit
-          </button>
+          <h4 className='item_title'>Password:</h4>
+          <span className='content'>*******</span>
         </div>
       </section>
-    </div>
+
+      <section className='card_group button_group'>
+        <button className='delete_button' onClick={() => deleteUser(user.id)}>
+          Delete
+        </button>
+
+        <button
+          className='edit_button'
+          onClick={() => navigate(`/edit_user/${user.id}`)}
+        >
+          Edit
+        </button>
+      </section>
+    </article>
   );
 }
 

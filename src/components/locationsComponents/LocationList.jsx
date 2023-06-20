@@ -19,7 +19,12 @@ const LocationList = () => {
     });
   };
 
-  return <section className='List'>{renderLocationList()}</section>;
+  return (
+    <section className='List'>
+      <h2 className='list_title'>Locations</h2>
+      {renderLocationList()}
+    </section>
+  );
 };
 
 export default LocationList;

@@ -23,7 +23,7 @@ import {
   deleteOrganizerRequest,
   deleteCategoryRequest,
   createCategoryRequest,
-  getCategoryByIdRegetCategoryByIdRequestquest,
+  getCategoryByIdRequest,
   updateCategoryRequest,
 } from '../api/events.api.js';
 import User from '../components/usersComponents/User.jsx';
@@ -236,6 +236,15 @@ export function EventsContextProvider(props) {
   const updateUser = async (id, newUser) => {
     try {
       const response = await updateUserRequest(id, newUser);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateCategory = async (id, new_category) => {
+    try {
+      const response = await updateCategoryRequest(id, new_category);
+      setcategories(categories.filter((category) => category.id != id));
     } catch (error) {
       console.log(error);
     }

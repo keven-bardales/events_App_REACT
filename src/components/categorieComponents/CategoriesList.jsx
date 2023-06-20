@@ -19,7 +19,12 @@ function CategoriesList() {
     });
   };
 
-  return <section className='List'>{renderCategoriesList()}</section>;
+  return (
+    <section className='List'>
+      <h2 className='list_title'>Categories</h2>
+      {renderCategoriesList()}
+    </section>
+  );
 }
 
 export default CategoriesList;

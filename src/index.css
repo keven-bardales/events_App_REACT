@@ -142,15 +142,19 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding-top: 2em;
+  padding: 2em 0;
 }
 
 .List .card {
-  flex-basis: calc(30% - 20px); /* Adjust the value as per your needs */
-  margin: 10px; /* Add some spacing between cards */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-basis: calc(30% - 20px);
+  margin: 10px;
   border-radius: 2em;
   padding: 1em;
   background-color: #030712;
+  border: 1px solid #3c424e;
 }
 
 .List .list_title {
@@ -160,19 +164,22 @@ p {
 }
 
 .List .card_image {
-  width: 100%;
+  flex-basis: 100%;
   height: auto;
-  object-fit: cover; /* Maintain aspect ratio while filling the container */
+  object-fit: cover;
   max-height: 300px;
+  max-width: 300px;
 }
 
 .List .cardtitle {
   font-size: 2em;
-  text-align: center; /* Center the card title */
+  text-align: center;
+  flex-basis: 100%;
 }
 
 .List .description {
-  color: #3c424e;
+  margin-top: 1em;
+  color: #515763;
   font-size: 1.3em;
 }
 
@@ -180,18 +187,29 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-basis: 49%;
+  flex-basis: 100%;
   margin-top: 1em;
 }
 
 .List .card_group .cardInfo {
   display: flex;
   flex-wrap: nowrap;
-  flex-basis: 40%;
+  flex-basis: 45%;
+  flex-grow: 1;
+}
+
+.cardInfo {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
 }
 
 .List .item_title {
   font-size: 1.5em;
+  color: #0ea5e9;
 }
 
 .List .event-location,
@@ -201,6 +219,35 @@ p {
 }
 
 .List .content {
-  font-size: 0.7em;
+  font-size: 1em;
   font-weight: 200;
+}
+
+.card button {
+  flex-basis: 30%;
+  padding: 1em 2em;
+  border-radius: 2em;
+  outline: none;
+  border: none;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background-color: #ccc;
+  color: #030712;
+}
+
+.List .delete_button {
+  background-color: #ff5e5b;
+}
+
+.List .edit_button {
+  background-color: #0ea5e9;
+}
+
+.List .button_group {
+  justify-content: space-around;
 }

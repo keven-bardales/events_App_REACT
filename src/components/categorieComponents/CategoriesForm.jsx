@@ -30,7 +30,7 @@ const CategoryForm = () => {
   }, []);
 
   return (
-    <div className='formDiv'>
+    <section className='form_section'>
       <h1>{params.id ? `Edit : ${category.name}` : 'Create a New Category'}</h1>
 
       <Formik
@@ -57,30 +57,54 @@ const CategoryForm = () => {
         }}
       >
         {({ isSubmitting, values }) => (
-          <Form>
-            <label>Category Name</label>
-            <Field
-              type='text'
-              name='name'
-              placeholder='Write a location Name'
-              required
-            ></Field>{' '}
-            <label>Category Description</label>
-            <Field
-              type='text'
-              as='textarea'
-              name='description'
-              placeholder='Write a location Name'
-              required
-            ></Field>{' '}
+          <Form className='createForm'>
+            <section className='column c_1'>
+              <div className='inputGroup'>
+                <div className='formInput'>
+                  <label htmlFor='name'>Category Name</label>
+                  <Field
+                    type='text'
+                    id='name'
+                    name='name'
+                    placeholder='Write a category name'
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className='inputGroup'>
+                <div className='formInput'>
+                  <label htmlFor='description'>Category Description</label>
+                  <Field
+                    type='text'
+                    as='textarea'
+                    id='description'
+                    name='description'
+                    placeholder='Write a category description'
+                    required
+                  />
+                </div>
+              </div>
+            </section>
+
             <button disabled={isSubmitting} type='submit'>
               {isSubmitting ? 'Saving...' : 'Send'}
             </button>
-            {formEnviado && <p>Formulario enviado con exito!</p>}
+
+            <button
+              className='form_cancel'
+              onClick={() => navigate('/categories')}
+              disabled={isSubmitting}
+              type='submit'
+            >
+              Cancel
+            </button>
+
+            {formEnviado && <p>Formulario enviado con éxito!</p>}
           </Form>
         )}
       </Formik>
-    </div>
+    </section>
   );
 };
 

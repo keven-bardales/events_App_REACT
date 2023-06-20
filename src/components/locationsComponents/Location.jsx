@@ -5,25 +5,44 @@ const Location = ({ location }) => {
   const navigate = useNavigate();
   const { deleteLocation } = useEvents();
   return (
-    <div className='card'>
+    <article className='card'>
       <h3 className='cardtitle'>{location.name}</h3>
       <img className='card_image' src={location.picture} alt='Location' />
-      <p className='description'>Address: {location.address}</p>
-      <p className='description'>Municipality: {location.municipality}</p>
-      <p className='description'>Department: {location.department}</p>
+
       <section className='card_group'>
         <div className='cardInfo'>
-          <button onClick={() => deleteLocation(location.id)}>
-            Delete Location
-          </button>
-        </div>
-        <div className='cardInfo'>
-          <button onClick={() => navigate(`/edit_location/${location.id}`)}>
-            Edit
-          </button>
+          <h4 className='item_title'>Address:</h4>
+          <span className='content'>{location.address}</span>
         </div>
       </section>
-    </div>
+
+      <section className='card_group'>
+        <div className='cardInfo'>
+          <h4 className='item_title'>Municipality:</h4>
+          <span className='content'>{location.municipality}</span>
+        </div>
+        <div className='cardInfo'>
+          <h4 className='item_title'>Department:</h4>
+          <span className='content'>{location.department}</span>
+        </div>
+      </section>
+
+      <section className='card_group button_group'>
+        <button
+          className='delete_button'
+          onClick={() => deleteLocation(location.id)}
+        >
+          Delete
+        </button>
+
+        <button
+          className='edit_button'
+          onClick={() => navigate(`/edit_location/${location.id}`)}
+        >
+          Edit
+        </button>
+      </section>
+    </article>
   );
 };
 

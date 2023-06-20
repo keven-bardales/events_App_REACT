@@ -19,7 +19,12 @@ function UserList() {
     });
   };
 
-  return <section className='List'>{renderUserList()}</section>;
+  return (
+    <section className='List'>
+      <h2 className='list_title'>Users</h2>
+      {renderUserList()}
+    </section>
+  );
 }
 
 export default UserList;
